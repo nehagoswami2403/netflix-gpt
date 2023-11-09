@@ -3,7 +3,7 @@ import Browse from "./Browse";
 import Login from "./Login";
 
 const Body = () => {
-
+    // routing in body
     const appRouter = createBrowserRouter(
         [
             {
