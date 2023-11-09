@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: netflix-gpt-container
+    build:
+      context: . 
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 7004:1234
+    volumes:
+      - .:/netflix-gpt  # whatever is defined WORKDIR in Dockerfile
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - FAST_REFRESH=true
+      - WDS_SOCKET_PORT=0
+      - NODE_ENV=development
+      - PORT=1234
+    command:  sh -c "npm install && npm start"
