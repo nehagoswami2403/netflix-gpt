@@ -1,17 +1,22 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidData } from "../utils/validate";
+import { checkValidEmail, checkValidPassword } from "../utils/validate";
 
 const Login = () => {
     const [isSignInForm , setIsSignInForm] = useState(true);
-    const [errorMessage, setValidationMessage] = useState(null);
+    const [emailValidationMessage, setEmailValidationMessage] = useState(null);
+    const [passValidationMessage, setPassValidationMessage] = useState(null);
+
     const email = useRef(null);
     const password = useRef(null);
    
     const handleButtonClick = () => {
         // validate the form data 
-        const validationMessage = checkValidData(email.current.value, password.current.value);
-        setValidationMessage(validationMessage);
+        const validationEmailMessage = checkValidEmail(email.current.value);
+        const validationPassMessage = checkValidPassword(password.current.value);
+
+        setEmailValidationMessage(validationEmailMessage);
+        setPassValidationMessage(validationPassMessage);
 
     }
 
@@ -35,9 +40,11 @@ const Login = () => {
                 }
                 
                 <input type="text" placeholder="Email" ref={email} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
-                <input type="password" placeholder="Password" ref={password} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
+                <p className="text-orange-500 text-xs">{emailValidationMessage}</p>
 
-                <p className="text-red-500 font-bold">{errorMessage}</p>
+                <input type="password" placeholder="Password" ref={password} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
+                <p className="text-orange-500 text-xs">{passValidationMessage}</p>
+
 
                 <button className="p-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>
                 {isSignInForm ? "Sign In" : "Sign Up"}
