@@ -19,7 +19,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
               // User is signed in, see docs for a list of available properties
               const { uid, email } = user;
@@ -33,6 +33,8 @@ const Header = () => {
               navigate("/")
             }
           });
+          
+          return () => unsubscribe();
           
     }, [])
 
