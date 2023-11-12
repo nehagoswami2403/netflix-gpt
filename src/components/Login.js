@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidEmail, checkValidPassword } from "../utils/validate";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
 
 const Login = () => {
     const [isSignInForm , setIsSignInForm] = useState(true);
     const [emailValidationMessage, setEmailValidationMessage] = useState(null);
     const [passValidationMessage, setPassValidationMessage] = useState(null);
+    const [signInErrorMessage, setSignInErrorMessage] = useState(null);
 
     const email = useRef(null);
     const password = useRef(null);
@@ -17,6 +20,40 @@ const Login = () => {
 
         setEmailValidationMessage(validationEmailMessage);
         setPassValidationMessage(validationPassMessage);
+
+        if (validationEmailMessage || validationPassMessage) return;
+        
+        
+        if (isSignInForm) {
+        //sign in logic
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage + errorCode);
+        setSignInErrorMessage("Sorry, we can't find an account with this email address and password. Please try again or create a new account.")
+        });
+        
+        } else {
+        //sign up logic
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+             // Signed up 
+            const user = userCredential.user;
+            console.log(user)
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage + errorCode);
+        });
+        }
+        
 
     }
 
@@ -31,14 +68,18 @@ const Login = () => {
              alt="background-img"></img>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 my-40 mx-auto right-0 left-0  p-12 bg-black text-white bg-opacity-80">
+            <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 my-40 mx-auto right-0 left-0 p-12 bg-black text-white bg-opacity-80">
                 <h1 className="font-bold text-3xl py-4">
                     {isSignInForm ? "Sign In" : "Sign Up"}
                     </h1>
                 { !isSignInForm && 
                 (<input type="text" placeholder="Full Name"  className="p-4 my-4 w-full bg-gray-800 rounded-lg" />)
                 }
-                
+
+                <div className="block p-4 max-w-sm bg-orange-500 rounded-lg ">
+                    <p className="font-normal text-white text-xs">{signInErrorMessage}</p>
+                </div>
+
                 <input type="text" placeholder="Email" ref={email} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
                 <p className="text-orange-500 text-xs">{emailValidationMessage}</p>
 
