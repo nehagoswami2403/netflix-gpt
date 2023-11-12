@@ -3,12 +3,14 @@ import Header from "./Header";
 import { checkValidEmail, checkValidPassword } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [isSignInForm , setIsSignInForm] = useState(true);
     const [emailValidationMessage, setEmailValidationMessage] = useState(null);
     const [passValidationMessage, setPassValidationMessage] = useState(null);
     const [signInErrorMessage, setSignInErrorMessage] = useState(null);
+    const navigate = useNavigate();
 
     const email = useRef(null);
     const password = useRef(null);
@@ -30,6 +32,8 @@ const Login = () => {
         .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        //redirect to browse page
+        navigate("/browse");
         console.log(user);
         })
         .catch((error) => {
@@ -45,7 +49,9 @@ const Login = () => {
         .then((userCredential) => {
              // Signed up 
             const user = userCredential.user;
-            console.log(user)
+            console.log(user);
+            //redirect to browse page
+            navigate("/browse");
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -86,16 +92,13 @@ const Login = () => {
                 <input type="password" placeholder="Password" ref={password} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
                 <p className="text-orange-500 text-xs">{passValidationMessage}</p>
 
-
                 <button className="p-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>
                 {isSignInForm ? "Sign In" : "Sign Up"}
                     </button>
                 
                 <p className="cursor-pointer" onClick={toggleSignInForm}>
                 {isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}
-
-                    
-                    </p>
+                </p>
             </form>
         </div>
     )
