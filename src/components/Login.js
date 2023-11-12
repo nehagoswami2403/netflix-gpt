@@ -76,9 +76,9 @@ const Login = () => {
                 (<input type="text" placeholder="Full Name"  className="p-4 my-4 w-full bg-gray-800 rounded-lg" />)
                 }
 
-                <div className="block p-4 max-w-sm bg-orange-500 rounded-lg ">
+                { signInErrorMessage && (<div className="block p-4 max-w-sm bg-orange-500 rounded-lg ">
                     <p className="font-normal text-white text-xs">{signInErrorMessage}</p>
-                </div>
+                </div>)}
 
                 <input type="text" placeholder="Email" ref={email} className="p-4 my-4 w-full bg-gray-800 rounded-lg" />
                 <p className="text-orange-500 text-xs">{emailValidationMessage}</p>
