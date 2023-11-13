@@ -4,6 +4,7 @@ export const SIGNIN_ERROR_MSG = "Sorry, we can't find an account with this email
 export const SIGNUP_MSG = "New to Netflix? Sign Up Now";
 export const SIGNIN_MSG = "Already registered? Sign In Now";
 export const GET_NOWPLAYINGMOVIES_LIST = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+export const GET_MOVIETRAILER_DETAILS = 'https://api.themoviedb.org/3/movie/';
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
