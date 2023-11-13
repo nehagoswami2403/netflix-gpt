@@ -3,7 +3,7 @@ export const USER_ICON = "https://occ-0-2085-2164.1.nflxso.net/dnm/api/v6/K6hjPJ
 export const SIGNIN_ERROR_MSG = "Sorry, we can't find an account with this email address and password. Please try again or create a new account.";
 export const SIGNUP_MSG = "New to Netflix? Sign Up Now";
 export const SIGNIN_MSG = "Already registered? Sign In Now";
-
+export const GET_NOWPLAYINGMOVIES_LIST = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
