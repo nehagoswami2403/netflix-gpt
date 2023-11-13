@@ -3,6 +3,7 @@ import Header from "./Header";
 import { checkValidEmail, checkValidPassword } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { SIGNIN_ERROR_MSG, SIGNIN_MSG, SIGNUP_MSG } from "../utils/constants";
 
 const Login = () => {
     const [isSignInForm , setIsSignInForm] = useState(true);
@@ -36,7 +37,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage + errorCode);
-        setSignInErrorMessage("Sorry, we can't find an account with this email address and password. Please try again or create a new account.")
+        setSignInErrorMessage(SIGNIN_ERROR_MSG)
         });
         
         } else {
@@ -91,7 +92,7 @@ const Login = () => {
                     </button>
                 
                 <p className="cursor-pointer" onClick={toggleSignInForm}>
-                {isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now"}
+                {isSignInForm ? SIGNUP_MSG : SIGNIN_MSG}
                 </p>
             </form>
         </div>
