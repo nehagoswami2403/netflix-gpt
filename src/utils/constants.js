@@ -3,3 +3,12 @@ export const USER_ICON = "https://occ-0-2085-2164.1.nflxso.net/dnm/api/v6/K6hjPJ
 export const SIGNIN_ERROR_MSG = "Sorry, we can't find an account with this email address and password. Please try again or create a new account.";
 export const SIGNUP_MSG = "New to Netflix? Sign Up Now";
 export const SIGNIN_MSG = "Already registered? Sign In Now";
+
+export const API_OPTIONS = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MGM1YTJhYTUxZjdiNjU4ZDEwNWRmYzlmMDZhY2JmNiIsInN1YiI6IjY1NTBiNmI3MDgxNmM3MDExYTA5NGZkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8q9OP5eMhJ0rYZJYX6D0esV2RHkwCeQGJaQcj7r88eM'
+    }
+  };
+  
