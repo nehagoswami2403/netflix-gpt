@@ -3,7 +3,7 @@ import Header from "./Header";
 import { checkValidEmail, checkValidPassword } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { SIGNIN_ERROR_MSG, SIGNIN_MSG, SIGNUP_MSG } from "../utils/constants";
+import { BACKGROUND_IMAGE, SIGNIN_ERROR_MSG, SIGNIN_MSG, SIGNUP_MSG } from "../utils/constants";
 
 const Login = () => {
     const [isSignInForm , setIsSignInForm] = useState(true);
@@ -65,8 +65,8 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-            <img src="https://assets.nflxext.com/ffe/siteui/vlv3/77d35039-751f-4c3e-9c8d-1240c1ca6188/cf244808-d722-428f-80a9-052acdf158ec/IN-en-20231106-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-             alt="background-img"></img>
+            <img src={BACKGROUND_IMAGE}
+             alt="background-img" />
             </div>
 
             <form onSubmit={(e) => e.preventDefault()} className="absolute w-3/12 my-40 mx-auto right-0 left-0 p-12 bg-black text-white bg-opacity-80">
