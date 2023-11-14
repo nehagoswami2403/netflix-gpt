@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { HEADER_LOGO, USER_ICON } from "../utils/constants";
-import { toggleGptSearch } from "../utils/gptSearchSlice";
+import { removeGPTData, toggleGptSearch } from "../utils/gptSearchSlice";
 
 const Header = () => {
     const showGptSearch = useSelector(store => store.gpt.toggleGptSearch)
@@ -24,6 +24,9 @@ const Header = () => {
 
     const handleGptSearch =() => {
         dispatch(toggleGptSearch());
+        if (!showGptSearch) {
+            dispatch(removeGPTData(null))
+        }
     }
 
     useEffect(() => {

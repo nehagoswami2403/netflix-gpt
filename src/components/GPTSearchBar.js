@@ -17,7 +17,7 @@ const GPTSearchBar = () => {
         //       });
         const gptResults = [{
             "message": {
-              "content" : "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jane bhi Do Yaron, Padosan"
+              "content" : "Jawaan, Hera Pheri, Bahubali, 3 idiots, twilight"
             }
           }]
 
