@@ -10,7 +10,7 @@ export const GET_POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?la
 export const GET_UPCOMING_MOVIES = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
 export const GET_TOP_RATED_MOVIES = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
 export const BACKGROUND_IMAGE = "https://assets.nflxext.com/ffe/siteui/vlv3/77d35039-751f-4c3e-9c8d-1240c1ca6188/cf244808-d722-428f-80a9-052acdf158ec/IN-en-20231106-popsignuptwoweeks-perspective_alpha_website_large.jpg";
-export const OPEN_AI_GPT_SECRET_KEY = "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"
+export const OPEN_AI_GPT_SECRET_KEY = "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"
 export const API_OPTIONS = {
     method: 'GET',
     headers: {

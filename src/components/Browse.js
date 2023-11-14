@@ -11,7 +11,8 @@ import SecondaryContainer from "./SecondaryContainer";
 
 
 const Browse = () => {
-    const showGptSearch = useSelector(store => store.gpt.toggleGptSearch)
+    const showGptSearch = useSelector(store => store.gpt.toggleGptSearch);
+
     //fetch movie now playing details and store in the movie slice
     useNowplayingMovies();
     usePopularMovies();

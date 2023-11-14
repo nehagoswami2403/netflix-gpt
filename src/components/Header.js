@@ -24,7 +24,6 @@ const Header = () => {
 
     const handleGptSearch =() => {
         dispatch(toggleGptSearch());
-        console.log('testing');
     }
 
     useEffect(() => {
