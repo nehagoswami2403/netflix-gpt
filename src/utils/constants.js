@@ -6,6 +6,10 @@ export const SIGNIN_MSG = "Already registered? Sign In Now";
 export const GET_NOWPLAYINGMOVIES_LIST = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 export const GET_MOVIETRAILER_DETAILS = 'https://api.themoviedb.org/3/movie/';
 export const MOVIE_CARD_IMAGE_CDN_URL = 'https://image.tmdb.org/t/p/w500/';
+export const GET_POPULAR_MOVIES = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+export const GET_UPCOMING_MOVIES = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+export const GET_TOP_RATED_MOVIES = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
